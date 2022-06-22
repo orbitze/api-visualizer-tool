@@ -25,8 +25,7 @@ function DataForm() {
   function updateEndTime(response) {
     if (response !== undefined) {
       response.customData = response.customData || {};
-      response.customData.time =
-        new Date().getTime() - response.config.customData.startTime;
+      response.customData.time = new Date().getTime() - response.config.customData.startTime;
       return response;
     }
   }
@@ -69,8 +68,7 @@ function DataForm() {
           setTime(response.customData.time);
           setSize(
             prettyBytes(
-              JSON.stringify(response.data).length +
-                JSON.stringify(response.headers).length
+              JSON.stringify(response.data).length + JSON.stringify(response.headers).length
             )
           );
         }
@@ -78,8 +76,8 @@ function DataForm() {
   };
 
   return (
-    <div>
-      <div className='p-4'>
+    <div className='p-4'>
+      <div>
         <Formik
           initialValues={{
             url: 'https://jsonplaceholder.typicode.com/todos/',
@@ -111,22 +109,16 @@ function DataForm() {
                     className='form-control'
                     placeholder='https://www.example.com' />
                   <div className='form-group'>
-                    <button className='btn btn-primary' type='submit'>
+                    <button className='btn btn-primary px-4' type='submit'>
                       Send
                     </button>
                   </div>
                 </div>
               </div>
 
-              <Tabs
-                className='mb-3 tab-content border-top-0'
-                defaultActiveKey='query-params'
-              >
+              <Tabs defaultActiveKey='query-params' className='nav nav-tabs'>
                 <Tab eventKey='query-params' title='Query Params'>
-                  <FieldArray
-                    name='query_data'
-                    className='tab-content p-3 border-top-0 border'
-                  >
+                  <FieldArray name='query_data' className='tab-content p-3 border-top-0 border'>
                     {(queryArray) => (
                       <KeyValueTemplate
                         data={values.query_data}
@@ -135,11 +127,7 @@ function DataForm() {
                     )}
                   </FieldArray>
                   <div className='form-group'>
-                    <button
-                      className='btn btn-outline-success mr-auto'
-                      type='submit'
-                      onClick={() => values.query_data.push({})}
-                    >
+                    <button type='submit' className='btn btn-outline-success mr-auto' onClick={() => values.query_data.push({})} >
                       Add
                     </button>
                   </div>
@@ -153,6 +141,11 @@ function DataForm() {
                       />
                     )}
                   </FieldArray>
+                  <div className='form-group'>
+                    <button type='submit' className='btn btn-outline-success mr-auto' onClick={() => values.header_data.push({})} >
+                      Add
+                    </button>
+                  </div>
                 </Tab>
                 <Tab eventKey='json' title='JSON'>
                   <JSONInput
@@ -169,13 +162,12 @@ function DataForm() {
                   />
                 </Tab>
               </Tabs>
-            </Form>
+            </Form> 
           )}
         </Formik>
       </div>
-
-      <div className='mx-4'>
-        <h3>Response</h3>
+      <div className='mt-5'>
+        <br/><h4>Response</h4>
         <div className='d-flex my-2'>
           <div className='me-3'>Status: {status}</div>
           <div className='me-3'>Time: {time} ms</div>

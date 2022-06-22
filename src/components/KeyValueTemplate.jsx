@@ -12,13 +12,13 @@ export default function KeyValueTemplate(props) {
           <div key={index} className='input-group my-2'>
             <Field
               placeholder='Key'
-              className='border-1 rounded-lg px-2 col'
+              className='form-control'
               name={`data.${index}.key`}
               type='input'
             />
             <Field
               placeholder='Value'
-              className='border-1 rounded-lg px-2 col'
+              className='form-control'
               name={`data.${index}.value`}
               type='input'
             />
