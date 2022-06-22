@@ -117,8 +117,8 @@ function DataForm() {
               </div>
 
               <Tabs defaultActiveKey='query-params' className='nav nav-tabs'>
-                <Tab eventKey='query-params' title='Query Params'>
-                  <FieldArray name='query_data' className='tab-content p-3 border-top-0 border'>
+                <Tab eventKey='query-params' title='Query Params' className='tab-content p-3 border-top-0 border'>
+                  <FieldArray name='query_data'>
                     {(queryArray) => (
                       <KeyValueTemplate
                         data={values.query_data}
@@ -127,12 +127,12 @@ function DataForm() {
                     )}
                   </FieldArray>
                   <div className='form-group'>
-                    <button type='submit' className='btn btn-outline-success mr-auto' onClick={() => values.query_data.push({})} >
+                    <button type='submit' className='mt-2 btn btn-outline-success mr-auto' onClick={() => values.query_data.push({})} >
                       Add
                     </button>
                   </div>
                 </Tab>
-                <Tab eventKey='headers' title='Headers'>
+                <Tab eventKey='headers' title='Headers' className='tab-content p-3 border-top-0 border'>
                   <FieldArray name='header_data'>
                     {(headersArray) => (
                       <KeyValueTemplate
@@ -142,7 +142,7 @@ function DataForm() {
                     )}
                   </FieldArray>
                   <div className='form-group'>
-                    <button type='submit' className='btn btn-outline-success mr-auto' onClick={() => values.header_data.push({})} >
+                    <button type='submit' className='mt-2 btn btn-outline-success mr-auto' onClick={() => values.header_data.push({})} >
                       Add
                     </button>
                   </div>
@@ -150,15 +150,16 @@ function DataForm() {
                 <Tab eventKey='json' title='JSON'>
                   <JSONInput
                     id='json_input'
-                    theme='light_mitsuketa_tribute'
-                    colors={{
-                      string: '#000',
-                      backgroud: '#FCFDFD',
-                    }}
+                    theme='dark_vscode_tribute'
+                    // colors={{
+                    //   string: 'red',
+                    //   background: '#FCFDFD'
+                    // }}
                     locale={locale}
                     onChange={(data) => setJSON(data.jsObject)}
                     height='25vh'
                     width='100%'
+                    style={{ body: { fontSize: '1em', },  }}
                   />
                 </Tab>
               </Tabs>
@@ -167,7 +168,7 @@ function DataForm() {
         </Formik>
       </div>
       <div className='mt-5'>
-        <br/><h4>Response</h4>
+        <h4>Response</h4>
         <div className='d-flex my-2'>
           <div className='me-3'>Status: {status}</div>
           <div className='me-3'>Time: {time} ms</div>
