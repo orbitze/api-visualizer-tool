@@ -82,7 +82,7 @@ function DataForm() {
       <div className='p-4'>
         <Formik
           initialValues={{
-            url: 'https://jsonplaceholder.typicode.com/todos/1',
+            url: 'https://jsonplaceholder.typicode.com/todos/',
             query_data: [{}],
             header_data: [{}],
             method: 'GET',
